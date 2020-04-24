@@ -1,6 +1,6 @@
 # docker-php
 
-[![Build Status](https://travis-ci.org/chirripo/docker-php.svg?branch=master)](https://travis-ci.org/chirripo/docker-php)
+[![Build Status](https://travis-ci.org/chirripo/php.svg?branch=7.3)](https://travis-ci.org/chirripo/php)
 
 PHP Image containing some useful extensions.
 
