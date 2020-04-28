@@ -84,6 +84,7 @@ ENV PATH=$PATH:$GOPATH/bin
 RUN go get github.com/mailhog/mhsendmail
 RUN cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
 COPY ./php.ini /usr/local/etc/php/conf.d/docker-php.ini
+COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY docker-php-entrypoint /usr/local/bin/
 
 # Fix iconv lib
