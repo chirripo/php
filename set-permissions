@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+APP_DOCKER_DIR=/var/www/html
+HOST_OSTYPE=${HOST_OSTYPE-linux}
+APP_DOCROOT=web
+PRIVATE_DIR=${PRIVATE_DIR-sites/default/files/private}
+
+# Make directory if it doesn't exist
+mkdir -p "$APP_DOCKER_DIR/$APP_DOCROOT/sites/default/files"
+
+chmod -R g+w "$APP_DOCKER_DIR/$APP_DOCROOT/sites/default/files"
+find "$APP_DOCKER_DIR/$APP_DOCROOT/sites/default/files" -type d -print0 | xargs -0 chmod g+s
+
+if [ -d "$APP_DOCKER_DIR/$APP_DOCROOT/$PRIVATE_DIR" ]; then
+  chmod -R g+w "$APP_DOCKER_DIR/$APP_DOCROOT/$PRIVATE_DIR"
+  find "$APP_DOCKER_DIR/$APP_DOCROOT/$PRIVATE_DIR" -type d -print0 | xargs -0 chmod g+s
+else
+  echo "No private directory found"
+fi
