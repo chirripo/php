@@ -86,6 +86,7 @@ RUN cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
 COPY ./php.ini /usr/local/etc/php/conf.d/docker-php.ini
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY docker-php-entrypoint /usr/local/bin/
+COPY set-permissions /usr/local/bin/
 
 # Fix iconv lib
 RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv
