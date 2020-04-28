@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+# first arg is `-f` or `--some-option`
+if [ "${1#-}" != "$1" ]; then
+	set -- php-fpm "$@"
+fi
+
+# If enviorment variable is set for XDebug to be enabled then enable it
+if [ "$XDEBUG_ENABLE" = "enable" ] ; then
+  docker-php-ext-enable xdebug
+fi
+
+exec "$@"
