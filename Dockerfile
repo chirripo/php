@@ -37,7 +37,7 @@ RUN docker-php-source extract \
     && docker-php-ext-configure opcache \
     && docker-php-ext-configure pdo \
     && docker-php-ext-configure pdo_mysql \
-    && docker-php-ext-configure gd \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
     && docker-php-ext-install -j${NPROC} gd \
     && docker-php-source delete
