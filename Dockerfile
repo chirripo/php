@@ -43,7 +43,6 @@ RUN docker-php-source extract \
     && docker-php-source delete
 
 RUN docker-php-ext-install bcmath \
-    json \
     session \
     ctype \
     tokenizer \
