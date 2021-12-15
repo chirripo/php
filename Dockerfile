@@ -66,7 +66,7 @@ RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && printf "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707\n" > $PHP_INI_DIR/conf.d/blackfire.ini \
     && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
 
-RUN pecl install xdebug-2.9.4
+RUN pecl install xdebug-3.1.2
 
 # Imagemagick.
 RUN apk add --no-cache imagemagick-dev
