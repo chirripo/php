@@ -45,7 +45,6 @@ RUN docker-php-source extract \
 RUN docker-php-ext-install bcmath \
     session \
     ctype \
-    tokenizer \
     simplexml \
     dom \
     zip \
