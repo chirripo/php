@@ -1,6 +1,6 @@
-FROM php:7.4-fpm-alpine
+FROM php:8.1-fpm-alpine
 
-ENV XDEBUG_VERSION 2.9.4
+ENV XDEBUG_VERSION 3.1.2
 ENV PHP_MEMORY_LIMIT 256M
 ENV PHP_MAX_EXECUTION_TIME 120
 ENV PHP_POST_MAX_SIZE 100M
@@ -25,10 +25,8 @@ RUN docker-php-source extract \
     && rm -rf /tmp/* \
     && rm -rf /var/cache/apk/* \
     && docker-php-ext-configure bcmath \
-    && docker-php-ext-configure json \
     && docker-php-ext-configure session \
     && docker-php-ext-configure ctype \
-    && docker-php-ext-configure tokenizer \
     && docker-php-ext-configure simplexml \
     && docker-php-ext-configure dom \
     && docker-php-ext-configure zip \
@@ -43,14 +41,11 @@ RUN docker-php-source extract \
     && docker-php-source delete
 
 RUN docker-php-ext-install bcmath \
-    json \
     session \
     ctype \
-    tokenizer \
     simplexml \
     dom \
     zip \
-    iconv \
     xml \
     opcache \
     pdo \
@@ -66,7 +61,7 @@ RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && printf "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707\n" > $PHP_INI_DIR/conf.d/blackfire.ini \
     && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
 
-RUN pecl install xdebug-2.9.4
+RUN pecl install xdebug-3.1.2
 
 # Imagemagick.
 RUN apk add --no-cache imagemagick-dev
