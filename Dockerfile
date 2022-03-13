@@ -1,4 +1,4 @@
-FROM php:8.1-alpine
+FROM php:8.1-fpm-alpine
 
 ENV XDEBUG_VERSION 3.1.2
 ENV PHP_MEMORY_LIMIT 256M
@@ -25,10 +25,8 @@ RUN docker-php-source extract \
     && rm -rf /tmp/* \
     && rm -rf /var/cache/apk/* \
     && docker-php-ext-configure bcmath \
-    && docker-php-ext-configure json \
     && docker-php-ext-configure session \
     && docker-php-ext-configure ctype \
-    && docker-php-ext-configure tokenizer \
     && docker-php-ext-configure simplexml \
     && docker-php-ext-configure dom \
     && docker-php-ext-configure zip \
@@ -48,7 +46,6 @@ RUN docker-php-ext-install bcmath \
     simplexml \
     dom \
     zip \
-    iconv \
     xml \
     opcache \
     pdo \
