@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-alpine
+FROM php:8.0-fpm-alpine
 
 ENV XDEBUG_VERSION 3.1.2
 ENV PHP_MEMORY_LIMIT 256M
@@ -76,7 +76,7 @@ RUN apk update && apk add \
 RUN mkdir /root/go
 ENV GOPATH=/root/go
 ENV PATH=$PATH:$GOPATH/bin
-RUN go get github.com/mailhog/mhsendmail
+RUN go install github.com/mailhog/mhsendmail@latest
 RUN cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
 COPY ./php.ini /usr/local/etc/php/conf.d/docker-php.ini
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
