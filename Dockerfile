@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-alpine
+FROM php:8.1.6-fpm-alpine
 
 ENV XDEBUG_VERSION 3.1.2
 ENV PHP_MEMORY_LIMIT 256M
